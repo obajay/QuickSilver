@@ -26,34 +26,22 @@ seeds="dd3460ec11f78b4a7c4336f22a356fe00805ab64@seed.rhapsody-5.quicksilver.zone
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.quicksilverd/config/config.toml
 
 
-sudo tee /etc/systemd/system/quicksilverd.service > /dev/null <<EOF
-                                                                    
-[Unit]
-                                                                    
-Description=quicksilver
-                                                                    
-After=network-online.target
-                                                                    
+sudo tee /etc/systemd/system/quicksilverd.service > /dev/null <<EOF                                                                    
+[Unit]                                                                    
+Description=quicksilver                                                                    
+After=network-online.target                                                                    
 
                                                                     
-[Service]
-                                                                    
-User=$USER
-                                                                    
-ExecStart=$(which quicksilverd) start
-                                                                    
-Restart=on-failure
-                                                                    
-RestartSec=3
-                                                                    
+[Service]                                                                    
+User=$USER                                                                    
+ExecStart=$(which quicksilverd) start                                                                    
+Restart=on-failure                                                                    
+RestartSec=3                                                                    
 LimitNOFILE=65535
                                                                     
-
-                                                                    
-[Install]
-                                                                    
-WantedBy=multi-user.target
-                                                                    
+                                                                  
+[Install]                                                                    
+WantedBy=multi-user.target                                                                    
 EOF
                                                                     
 
