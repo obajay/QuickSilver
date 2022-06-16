@@ -48,3 +48,20 @@ EOF
 sudo systemctl daemon-reload && \
 sudo systemctl enable quicksilverd && \
 sudo systemctl restart quicksilverd && sudo journalctl -u quicksilverd -f -o cat
+                                                                    
+                                                                    
+create validator 
+
+quicksilverd tx staking create-validator \
+  --amount=4000000uqck \
+  --pubkey=$(quicksilverd tendermint show-validator) \
+  --moniker="moniker" \
+  --identity="" \
+  --website="" \
+  --details="" \
+  --chain-id="rhapsody-5" \
+  --commission-rate="0.10" \
+  --commission-max-rate="0.20" \
+  --commission-max-change-rate="0.01" \
+  --min-self-delegation="1" \
+  --from=walletname
